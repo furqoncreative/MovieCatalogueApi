@@ -1,4 +1,4 @@
-package com.furqoncreative.submission3.viewModel;
+package com.furqoncreative.submission3.ui.tv;
 
 import android.util.Log;
 
@@ -6,12 +6,12 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.furqoncreative.submission3.model.tv.Tv;
-import com.furqoncreative.submission3.model.tv.TvGenre;
-import com.furqoncreative.submission3.model.tv.TvGenresResponse;
-import com.furqoncreative.submission3.model.tv.TvsResponse;
-import com.furqoncreative.submission3.network.ApiInterface;
-import com.furqoncreative.submission3.util.ApiUtils;
+import com.furqoncreative.submission3.data.model.tv.Tv;
+import com.furqoncreative.submission3.data.model.tv.TvGenre;
+import com.furqoncreative.submission3.data.model.tv.TvGenresResponse;
+import com.furqoncreative.submission3.data.model.tv.TvsResponse;
+import com.furqoncreative.submission3.data.remote.ApiInterface;
+import com.furqoncreative.submission3.data.remote.ApiUtils;
 
 import java.util.ArrayList;
 
@@ -19,9 +19,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.furqoncreative.submission3.util.ApiUtils.API_KEY;
+import static com.furqoncreative.submission3.data.remote.ApiUtils.API_KEY;
 
-public class TvViewModel extends ViewModel {
+public class TvShowViewModel extends ViewModel {
 
     private final MutableLiveData<ArrayList<Tv>> lisTvs = new MutableLiveData<>();
     private final MutableLiveData<ArrayList<TvGenre>> listTvGenres = new MutableLiveData<>();

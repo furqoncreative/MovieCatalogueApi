@@ -1,4 +1,4 @@
-package com.furqoncreative.submission3.viewModel;
+package com.furqoncreative.submission3.ui.movie;
 
 import android.util.Log;
 
@@ -6,12 +6,12 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.furqoncreative.submission3.model.movie.Movie;
-import com.furqoncreative.submission3.model.movie.MovieGenre;
-import com.furqoncreative.submission3.model.movie.MovieGenresResponse;
-import com.furqoncreative.submission3.model.movie.MoviesResponse;
-import com.furqoncreative.submission3.network.ApiInterface;
-import com.furqoncreative.submission3.util.ApiUtils;
+import com.furqoncreative.submission3.data.model.movie.Movie;
+import com.furqoncreative.submission3.data.model.movie.MovieGenre;
+import com.furqoncreative.submission3.data.model.movie.MovieGenresResponse;
+import com.furqoncreative.submission3.data.model.movie.MoviesResponse;
+import com.furqoncreative.submission3.data.remote.ApiInterface;
+import com.furqoncreative.submission3.data.remote.ApiUtils;
 
 import java.util.ArrayList;
 
@@ -19,7 +19,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.furqoncreative.submission3.util.ApiUtils.API_KEY;
+import static com.furqoncreative.submission3.data.remote.ApiUtils.API_KEY;
 
 public class MovieViewModel extends ViewModel {
 

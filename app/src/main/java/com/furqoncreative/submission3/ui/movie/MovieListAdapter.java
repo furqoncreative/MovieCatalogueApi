@@ -1,4 +1,4 @@
-package com.furqoncreative.submission3.adapter;
+package com.furqoncreative.submission3.ui.movie;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.furqoncreative.submission3.R;
-import com.furqoncreative.submission3.model.movie.Movie;
-import com.furqoncreative.submission3.model.movie.MovieGenre;
+import com.furqoncreative.submission3.data.model.movie.Movie;
+import com.furqoncreative.submission3.data.model.movie.MovieGenre;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +23,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.furqoncreative.submission3.util.ApiUtils.IMAGE_URL;
+import static com.furqoncreative.submission3.data.remote.ApiUtils.IMAGE_URL;
 
-public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder> {
+public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.ViewHolder> {
 
 
     private final Context mContext;
@@ -33,7 +33,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
     private List<Movie> mItems;
     private List<MovieGenre> movieGenre;
 
-    public MoviesAdapter(Context context, List<Movie> posts, List<MovieGenre> genres, PostItemListener itemListener) {
+    public MovieListAdapter(Context context, List<Movie> posts, List<MovieGenre> genres, PostItemListener itemListener) {
         movieGenre = genres;
         mItems = posts;
         mContext = context;

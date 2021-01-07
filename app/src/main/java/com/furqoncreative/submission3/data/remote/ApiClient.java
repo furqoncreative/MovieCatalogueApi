@@ -1,4 +1,4 @@
-package com.furqoncreative.submission3.network;
+package com.furqoncreative.submission3.data.remote;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

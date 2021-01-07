@@ -1,11 +1,11 @@
-package com.furqoncreative.submission3.network;
+package com.furqoncreative.submission3.data.remote;
 
-import com.furqoncreative.submission3.model.movie.Movie;
-import com.furqoncreative.submission3.model.movie.MovieGenresResponse;
-import com.furqoncreative.submission3.model.movie.MoviesResponse;
-import com.furqoncreative.submission3.model.tv.Tv;
-import com.furqoncreative.submission3.model.tv.TvGenresResponse;
-import com.furqoncreative.submission3.model.tv.TvsResponse;
+import com.furqoncreative.submission3.data.model.movie.Movie;
+import com.furqoncreative.submission3.data.model.movie.MovieGenresResponse;
+import com.furqoncreative.submission3.data.model.movie.MoviesResponse;
+import com.furqoncreative.submission3.data.model.tv.Tv;
+import com.furqoncreative.submission3.data.model.tv.TvGenresResponse;
+import com.furqoncreative.submission3.data.model.tv.TvsResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

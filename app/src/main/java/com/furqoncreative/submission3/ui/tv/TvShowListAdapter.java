@@ -1,4 +1,4 @@
-package com.furqoncreative.submission3.adapter;
+package com.furqoncreative.submission3.ui.tv;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.furqoncreative.submission3.R;
-import com.furqoncreative.submission3.model.tv.Tv;
-import com.furqoncreative.submission3.model.tv.TvGenre;
+import com.furqoncreative.submission3.data.model.tv.Tv;
+import com.furqoncreative.submission3.data.model.tv.TvGenre;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +23,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.furqoncreative.submission3.util.ApiUtils.IMAGE_URL;
+import static com.furqoncreative.submission3.data.remote.ApiUtils.IMAGE_URL;
 
-public class TvsAdapter extends RecyclerView.Adapter<TvsAdapter.ViewHolder> {
+public class TvShowListAdapter extends RecyclerView.Adapter<TvShowListAdapter.ViewHolder> {
 
 
     private final Context mContext;
@@ -33,7 +33,7 @@ public class TvsAdapter extends RecyclerView.Adapter<TvsAdapter.ViewHolder> {
     private List<Tv> mItems;
     private List<TvGenre> mTvGenre;
 
-    public TvsAdapter(Context context, List<Tv> posts, List<TvGenre> genres, PostItemListener itemListener) {
+    public TvShowListAdapter(Context context, List<Tv> posts, List<TvGenre> genres, PostItemListener itemListener) {
         mTvGenre = genres;
         mItems = posts;
         mContext = context;

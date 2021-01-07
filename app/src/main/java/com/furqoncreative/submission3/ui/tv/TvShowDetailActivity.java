@@ -1,4 +1,4 @@
-package com.furqoncreative.submission3.view.activity;
+package com.furqoncreative.submission3.ui.tv;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -16,8 +16,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.furqoncreative.submission3.R;
-import com.furqoncreative.submission3.model.tv.Tv;
-import com.furqoncreative.submission3.viewModel.TvViewModel;
+import com.furqoncreative.submission3.data.model.tv.Tv;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.Locale;
@@ -26,10 +25,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static com.furqoncreative.submission3.util.ApiUtils.IMAGE_URL;
+import static com.furqoncreative.submission3.data.remote.ApiUtils.IMAGE_URL;
 
 @SuppressWarnings("ALL")
-public class DetailTvActivity extends AppCompatActivity {
+public class TvShowDetailActivity extends AppCompatActivity {
 
     public static final String ID = "tv_id";
     @BindView(R.id.avi)
@@ -61,13 +60,13 @@ public class DetailTvActivity extends AppCompatActivity {
                 showLoading();
                 imgBack.setVisibility(View.VISIBLE);
                 imgBackdrop.setVisibility(View.VISIBLE);
-                Glide.with(DetailTvActivity.this)
+                Glide.with(TvShowDetailActivity.this)
                         .load(IMAGE_URL + tv.getBackdropPath())
                         .apply(RequestOptions.placeholderOf(R.color.colorPrimary))
                         .into(imgBackdrop);
 
                 imgPoster.setVisibility(View.VISIBLE);
-                Glide.with(DetailTvActivity.this)
+                Glide.with(TvShowDetailActivity.this)
                         .load(IMAGE_URL + tv.getPosterPath())
                         .apply(RequestOptions.placeholderOf(R.color.colorPrimary))
                         .into(imgPoster);
@@ -87,7 +86,7 @@ public class DetailTvActivity extends AppCompatActivity {
             }
         }
     };
-    private TvViewModel tvViewModel;
+    private TvShowViewModel tvShowViewModel;
     private int TV_ID;
 
     @Override
@@ -119,14 +118,14 @@ public class DetailTvActivity extends AppCompatActivity {
         if (LANGUANGE.equals("in_ID")) {
             LANGUANGE = "id_ID";
         }
-        tvViewModel.setTv(TV_ID, LANGUANGE);
+        tvShowViewModel.setTv(TV_ID, LANGUANGE);
 
     }
 
     private void setupViewModeL() {
 
-        tvViewModel = ViewModelProviders.of(this).get(TvViewModel.class);
-        tvViewModel.getTv().observe(this, getTv);
+        tvShowViewModel = ViewModelProviders.of(this).get(TvShowViewModel.class);
+        tvShowViewModel.getTv().observe(this, getTv);
 
     }
 

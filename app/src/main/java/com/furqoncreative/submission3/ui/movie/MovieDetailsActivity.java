@@ -1,4 +1,4 @@
-package com.furqoncreative.submission3.view.activity;
+package com.furqoncreative.submission3.ui.movie;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -17,8 +17,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.furqoncreative.submission3.R;
-import com.furqoncreative.submission3.model.movie.Movie;
-import com.furqoncreative.submission3.viewModel.MovieViewModel;
+import com.furqoncreative.submission3.data.model.movie.Movie;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.Locale;
@@ -27,10 +26,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static com.furqoncreative.submission3.util.ApiUtils.IMAGE_URL;
+import static com.furqoncreative.submission3.data.remote.ApiUtils.IMAGE_URL;
 
 @SuppressWarnings("ALL")
-public class DetailMovieActivity extends AppCompatActivity {
+public class MovieDetailsActivity extends AppCompatActivity {
 
     public static final String ID = "movie_id";
     @BindView(R.id.error_layout)
@@ -62,13 +61,13 @@ public class DetailMovieActivity extends AppCompatActivity {
                 showLoading();
                 imgBack.setVisibility(View.VISIBLE);
                 imgBackdrop.setVisibility(View.VISIBLE);
-                Glide.with(DetailMovieActivity.this)
+                Glide.with(MovieDetailsActivity.this)
                         .load(IMAGE_URL + movie.getBackdropPath())
                         .apply(RequestOptions.placeholderOf(R.color.colorPrimary))
                         .into(imgBackdrop);
 
                 imgPoster.setVisibility(View.VISIBLE);
-                Glide.with(DetailMovieActivity.this)
+                Glide.with(MovieDetailsActivity.this)
                         .load(IMAGE_URL + movie.getPosterPath())
                         .apply(RequestOptions.placeholderOf(R.color.colorPrimary))
                         .into(imgPoster);

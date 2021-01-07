@@ -1,7 +1,7 @@
-package com.furqoncreative.submission3.util;
+package com.furqoncreative.submission3.data.remote;
 
-import com.furqoncreative.submission3.network.ApiClient;
-import com.furqoncreative.submission3.network.ApiInterface;
+import com.furqoncreative.submission3.data.remote.ApiClient;
+import com.furqoncreative.submission3.data.remote.ApiInterface;
 
 public class ApiUtils {
 

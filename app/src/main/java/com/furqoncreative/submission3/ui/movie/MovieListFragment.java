@@ -1,4 +1,4 @@
-package com.furqoncreative.submission3.view.fragment;
+package com.furqoncreative.submission3.ui.movie;
 
 
 import android.content.Context;
@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -19,11 +18,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.furqoncreative.submission3.R;
-import com.furqoncreative.submission3.adapter.TvsAdapter;
-import com.furqoncreative.submission3.model.tv.Tv;
-import com.furqoncreative.submission3.model.tv.TvGenre;
-import com.furqoncreative.submission3.view.activity.DetailTvActivity;
-import com.furqoncreative.submission3.viewModel.TvViewModel;
+import com.furqoncreative.submission3.data.model.movie.Movie;
+import com.furqoncreative.submission3.data.model.movie.MovieGenre;
 import com.stone.vega.library.VegaLayoutManager;
 import com.wang.avi.AVLoadingIndicatorView;
 
@@ -36,64 +32,56 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TvFragment extends Fragment {
-
+public class MovieListFragment extends Fragment {
 
     @BindView(R.id.avi)
     AVLoadingIndicatorView avi;
-    @BindView(R.id.rv_tv)
-    RecyclerView rvTv;
-    @BindView(R.id.activity_main)
-    RelativeLayout activityMain;
+    @BindView(R.id.rv_movie)
+    RecyclerView rvMovie;
     @BindView(R.id.error_layout)
     LinearLayout errorLayout;
-    private TvsAdapter mAdapter;
-    private final Observer<ArrayList<Tv>> getTvs = new Observer<ArrayList<Tv>>() {
+    private MovieListAdapter mAdapter;
+    private final Observer<ArrayList<Movie>> getMovies = new Observer<ArrayList<Movie>>() {
         @Override
-        public void onChanged(ArrayList<Tv> items) {
+        public void onChanged(ArrayList<Movie> items) {
             if (items != null) {
+                mAdapter.addMovies(items);
                 showLoading(false);
-                mAdapter.addTvs(items);
-            } else if (items == null) {
-                showLoading(false);
-                showError();
             }
         }
     };
-    private final Observer<ArrayList<TvGenre>> getGenres = new Observer<ArrayList<TvGenre>>() {
+    private final Observer<ArrayList<MovieGenre>> getGenres = new Observer<ArrayList<MovieGenre>>() {
         @Override
-        public void onChanged(ArrayList<TvGenre> items) {
+        public void onChanged(ArrayList<MovieGenre> items) {
             if (items != null) {
                 mAdapter.addGenres(items);
                 showLoading(false);
-            } else if (items == null) {
-                showLoading(false);
-                showError();
             }
         }
     };
-    private TvViewModel tvViewModel;
+    private MovieViewModel movieViewModel;
 
-    public TvFragment() {
-        // Required empty public constructor
+    public MovieListFragment() {
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_tv, container, false);
+        View v = inflater.inflate(R.layout.fragment_movie, container, false);
         ButterKnife.bind(this, v);
         checkConnection();
         showLoading(true);
-        mAdapter = new TvsAdapter(getContext(), new ArrayList<Tv>(), new ArrayList<TvGenre>(), new TvsAdapter.PostItemListener() {
+        mAdapter = new MovieListAdapter(getContext(), new ArrayList<Movie>(), new ArrayList<MovieGenre>(), new MovieListAdapter.PostItemListener() {
             @Override
             public void onPostClick(int id) {
-                Intent intent = new Intent(getContext(), DetailTvActivity.class);
-                intent.putExtra(DetailTvActivity.ID, id);
+                Intent intent = new Intent(getContext(), MovieDetailsActivity.class);
+                intent.putExtra(MovieDetailsActivity.ID, id);
                 startActivity(intent);
             }
         });
+
         setupViewModeL();
         setupData();
         setupView();
@@ -114,12 +102,10 @@ public class TvFragment extends Fragment {
     }
 
     private void setupView() {
-        rvTv.setLayoutManager(new VegaLayoutManager());
-        rvTv.setAdapter(mAdapter);
+        rvMovie.setLayoutManager(new VegaLayoutManager());
+        rvMovie.setAdapter(mAdapter);
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
-        rvTv.addItemDecoration(itemDecoration);
-
-
+        rvMovie.addItemDecoration(itemDecoration);
     }
 
     private void setupData() {
@@ -127,14 +113,14 @@ public class TvFragment extends Fragment {
         if (LANGUANGE.equals("in_ID")) {
             LANGUANGE = "id_ID";
         }
-        tvViewModel.setTvs(LANGUANGE);
-        tvViewModel.setGenre(LANGUANGE);
+        movieViewModel.setMovies(LANGUANGE);
+        movieViewModel.setGenre(LANGUANGE);
     }
 
     private void setupViewModeL() {
-        tvViewModel = ViewModelProviders.of(this).get(TvViewModel.class);
-        tvViewModel.getTvs().observe(this, getTvs);
-        tvViewModel.getGenres().observe(this, getGenres);
+        movieViewModel = ViewModelProviders.of(this).get(MovieViewModel.class);
+        movieViewModel.getMovies().observe(this, getMovies);
+        movieViewModel.getGenres().observe(this, getGenres);
 
     }
 

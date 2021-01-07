@@ -1,4 +1,4 @@
-package com.furqoncreative.submission3.model.movie;
+package com.furqoncreative.submission3.data.model.movie;
 
 import com.google.gson.annotations.SerializedName;
 

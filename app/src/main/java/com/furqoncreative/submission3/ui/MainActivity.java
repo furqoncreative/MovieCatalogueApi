@@ -1,4 +1,4 @@
-package com.furqoncreative.submission3.view.activity;
+package com.furqoncreative.submission3.ui;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,8 +16,8 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.furqoncreative.submission3.R;
-import com.furqoncreative.submission3.view.fragment.MovieFragment;
-import com.furqoncreative.submission3.view.fragment.TvFragment;
+import com.furqoncreative.submission3.ui.movie.MovieListFragment;
+import com.furqoncreative.submission3.ui.tv.TvShowListFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,8 +79,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new MovieFragment());
-        adapter.addFrag(new TvFragment());
+        adapter.addFrag(new MovieListFragment());
+        adapter.addFrag(new TvShowListFragment());
         viewPager.setAdapter(adapter);
     }
 
